@@ -1,0 +1,7 @@
+# Yerel/sunucu tarafi dosyalar (herkese acik GitHub deposuna yuklenmez)
+contact.php
+admin.php
+admin-config.php
+router.php
+admin-backups/
+.git-publish-log.txt
