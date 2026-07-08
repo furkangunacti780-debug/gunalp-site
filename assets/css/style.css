@@ -117,7 +117,11 @@ ul{margin:0;padding:0;list-style:none}
 .site-header{
   position:sticky;top:0;z-index:60;
   background:var(--green);
-  border-bottom:1px solid rgba(201,162,74,.25);
+  /* Kenarlık yerine kendi katmanında çizilen box-shadow: mobilde adres çubuğu
+     açılıp kapanırken oluşan hairline titremesini önler. */
+  box-shadow:0 1px 0 rgba(201,162,74,.25);
+  transform:translateZ(0);
+  -webkit-backface-visibility:hidden;backface-visibility:hidden;
 }
 .nav{
   display:flex;align-items:center;justify-content:space-between;
@@ -161,6 +165,9 @@ ul{margin:0;padding:0;list-style:none}
   }
   .nav-links.open{max-height:70vh;padding-block:1rem;border-bottom-color:rgba(201,162,74,.25)}
   .nav-links a{width:100%;padding:.75rem 0;border-bottom:1px solid rgba(244,239,228,.07);font-size:1rem}
+  /* Dikey mobil menüde aktif sayfa alt çizgisi alttaki bağlantıya taşıyordu;
+     aktif sayfa zaten altın renkle belli olduğundan çizgiyi gizle. */
+  .nav-links a[aria-current="page"]::after{display:none}
   .nav.open .nav-toggle span:nth-child(1){transform:translateY(7px) rotate(45deg)}
   .nav.open .nav-toggle span:nth-child(2){opacity:0}
   .nav.open .nav-toggle span:nth-child(3){transform:translateY(-7px) rotate(-45deg)}
@@ -265,6 +272,21 @@ section{padding-block:clamp(56px,8vw,104px)}
 .gallery figure:hover img{transform:scale(1.05)}
 .gallery figcaption{font-size:.8rem;color:var(--ink-soft);padding:.6rem .2rem 0;text-align:center}
 @media(max-width:640px){.gallery,.gallery.two{grid-template-columns:repeat(2,1fr);gap:10px}}
+
+/* ---------- Concept cards (photo + title) ---------- */
+.concept-grid{
+  display:grid;grid-template-columns:repeat(2,1fr);gap:clamp(18px,3vw,30px);
+  max-width:860px;margin-inline:auto;
+}
+.concept{margin:0}
+.concept .concept-img{
+  border:1px solid var(--line);background:#fff;padding:8px;
+  box-shadow:var(--shadow);overflow:hidden;
+}
+.concept .concept-img img{width:100%;aspect-ratio:4/3;object-fit:cover;display:block;transition:transform .5s ease}
+.concept:hover .concept-img img{transform:scale(1.05)}
+.concept h3{font-size:clamp(1.15rem,2vw,1.4rem);text-align:center;margin-top:1rem;letter-spacing:.01em}
+@media(max-width:520px){.concept-grid{grid-template-columns:1fr;max-width:420px}}
 
 /* ---------- Materials strip ---------- */
 .materials{display:grid;grid-template-columns:repeat(2,1fr);gap:1rem 2rem;margin-top:1rem}
