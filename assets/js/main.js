@@ -37,6 +37,22 @@
     reveals.forEach(function (el) { el.classList.add("in"); });
   }
 
+  /* ---- Hexbox loop: play only while visible (saves bandwidth) ---- */
+  var hexVids = document.querySelectorAll(".hexbox-video");
+  if (hexVids.length) {
+    if ("IntersectionObserver" in window) {
+      var vio = new IntersectionObserver(function (entries) {
+        entries.forEach(function (en) {
+          if (en.isIntersecting) { en.target.play(); }
+          else { en.target.pause(); }
+        });
+      }, { rootMargin: "120px" });
+      hexVids.forEach(function (v) { vio.observe(v); });
+    } else {
+      hexVids.forEach(function (v) { v.play(); });
+    }
+  }
+
   /* ---- Workshop video: click cover to load & play ---- */
   document.querySelectorAll(".video-cover").forEach(function (btn) {
     var video = btn.parentElement.querySelector("video");
