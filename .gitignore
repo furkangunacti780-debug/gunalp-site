@@ -2,6 +2,8 @@
 contact.php
 admin.php
 admin-config.php
+ceviri-config.php
+ceviri-baglam.md
 router.php
 admin-backups/
 .git-publish-log.txt
