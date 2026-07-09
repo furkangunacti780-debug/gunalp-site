@@ -43,13 +43,20 @@
     if ("IntersectionObserver" in window) {
       var vio = new IntersectionObserver(function (entries) {
         entries.forEach(function (en) {
-          if (en.isIntersecting) { en.target.play(); }
-          else { en.target.pause(); }
+          if (en.isIntersecting) {
+            en.target.muted = true; /* iOS: attribute yetmeyebiliyor, property şart */
+            var pr = en.target.play();
+            if (pr && pr.catch) pr.catch(function () {});
+          } else { en.target.pause(); }
         });
       }, { rootMargin: "120px" });
       hexVids.forEach(function (v) { vio.observe(v); });
     } else {
-      hexVids.forEach(function (v) { v.play(); });
+      hexVids.forEach(function (v) {
+        v.muted = true;
+        var pr = v.play();
+        if (pr && pr.catch) pr.catch(function () {});
+      });
     }
   }
 
