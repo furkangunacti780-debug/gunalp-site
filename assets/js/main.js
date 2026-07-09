@@ -58,6 +58,15 @@
         if (pr && pr.catch) pr.catch(function () {});
       });
     }
+    /* iOS Düşük Güç Modu autoplay'i engeller: ilk dokunuş gerçek kullanıcı
+       hareketi sayıldığından oynatmayı garantiler */
+    hexVids.forEach(function (v) {
+      ["touchstart", "click"].forEach(function (ev) {
+        v.addEventListener(ev, function () {
+          if (v.paused) { v.muted = true; var p = v.play(); if (p && p.catch) p.catch(function () {}); }
+        }, { passive: true });
+      });
+    });
   }
 
   /* ---- İletişim formu: statik demoda PHP yok — fetch ile dene, olmazsa
