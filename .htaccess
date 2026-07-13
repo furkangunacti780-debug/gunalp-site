@@ -1,0 +1,16 @@
+# GÜNALP — sunucu önbellek denetimi (yalnızca gerçek sunucuda etkilidir; GitHub Pages yok sayar)
+# Amaç: HTML sayfaları her zaman tazelensin (tarayıcı eski sayfayı göstermesin),
+# görsel/CSS/JS gibi statik varlıklar uzun önbellekte kalsın (adları ya da ?v= değişince yenilenir).
+<IfModule mod_headers.c>
+  <FilesMatch "\.html$">
+    Header set Cache-Control "no-cache, must-revalidate, max-age=0"
+  </FilesMatch>
+  <FilesMatch "\.(jpg|jpeg|png|webp|gif|svg|ico|woff2|woff|ttf|css|js|mp4|webm)$">
+    Header set Cache-Control "public, max-age=2592000"
+  </FilesMatch>
+</IfModule>
+
+# Güvenlik: yönetim/gizli dosyalar sunucuda dışarıdan açılamasın (yanlışlıkla yüklenirse)
+<FilesMatch "^(admin\.php|admin-config\.php|ceviri-config\.php|ceviri-baglam\.md|ceviri-durum\.json|router\.php)$">
+  Require all denied
+</FilesMatch>
