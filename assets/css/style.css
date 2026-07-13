@@ -278,7 +278,7 @@ section{padding-block:clamp(56px,8vw,104px)}
 /* Tıpkıbasım kutuları: eşit boyutlu 4:3 kartlar, görsel kadrajı doldurur (site galeri kalıbı) */
 .facsimile-boxes{display:grid;grid-template-columns:1fr 1fr;gap:24px;max-width:820px;margin:2.6rem auto 0}
 .facsimile-boxes figure{margin:0;background:#fff;padding:10px;border:1px solid var(--gold);box-shadow:var(--shadow)}
-.facsimile-boxes img{width:100%;aspect-ratio:4/3;object-fit:cover;display:block;background:#fff;cursor:zoom-in}
+.facsimile-boxes img{width:100%;aspect-ratio:3/2;object-fit:cover;display:block;background:#fff;cursor:zoom-in}
 .facsimile-boxes figcaption{text-align:center;font-size:.85rem;color:var(--ink-soft);margin-top:.7rem}
 @media(max-width:820px){.facsimile-boxes{grid-template-columns:1fr;gap:22px;max-width:420px}}
 @media(max-width:820px){
