@@ -252,6 +252,8 @@ section{padding-block:clamp(56px,8vw,104px)}
 .split-media.tall img{aspect-ratio:3/4}
 /* Ürünün tamamı görünsün (kırpma yok): dikey ürün fotoğrafları için */
 .split-media.fit img{aspect-ratio:auto;object-fit:contain;max-height:560px;background:#fff}
+/* Büyütülebilir ürün görseli: tıkla-büyüt ipucu */
+.split-media img[data-lb]{cursor:zoom-in}
 /* Saydam (alfa) ürün görseli: beyaz kart çerçevesiz, doğrudan bölüm zeminine oturur */
 .split-media.bare{background:transparent;border:0;box-shadow:none;padding:0}
 .split-media.bare img{background:transparent;max-height:640px}
