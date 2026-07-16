@@ -1,4 +1,24 @@
-# GÜNALP — sunucu önbellek denetimi (yalnızca gerçek sunucuda etkilidir; GitHub Pages yok sayar)
+# GÜNALP — sunucu kuralları (yalnızca gerçek sunucuda etkilidir; GitHub Pages yok sayar)
+
+# Tek resmi adres: http'yi ve www'suz adresi kalıcı (301) olarak
+# https://www.gunalp.com.tr'ye yönlendir — Google iki ayrı site sanmasın.
+<IfModule mod_rewrite.c>
+  RewriteEngine On
+  RewriteCond %{HTTPS} off [OR]
+  RewriteCond %{HTTP_HOST} !^www\. [NC]
+  RewriteCond %{HTTP_HOST} !^localhost [NC]
+  RewriteRule ^(.*)$ https://www.gunalp.com.tr/$1 [L,R=301]
+
+  # Eski sitenin (Joomla) adresleri: Google'da hâlâ kayıtlılar ama artık 404 veriyorlar.
+  # Ziyaretçi ve Google boşluğa düşmesin diye kalıcı (301) olarak yeni sayfalara gönder.
+  RewriteRule ^en(/.*)?$ https://www.gunalp.com.tr/ [L,R=301]
+  RewriteRule ^arb(/.*)?$ https://www.gunalp.com.tr/ar/ [L,R=301]
+  RewriteRule ^index\.php$ https://www.gunalp.com.tr/ [L,R=301,QSD]
+</IfModule>
+
+# Olmayan bir sayfa açılırsa sunucu hatası yerine kendi şık 404 sayfamız görünsün
+ErrorDocument 404 /404.html
+
 # Amaç: HTML sayfaları her zaman tazelensin (tarayıcı eski sayfayı göstermesin),
 # görsel/CSS/JS gibi statik varlıklar uzun önbellekte kalsın (adları ya da ?v= değişince yenilenir).
 <IfModule mod_headers.c>
