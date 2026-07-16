@@ -287,6 +287,13 @@ section{padding-block:clamp(56px,8vw,104px)}
   .facsimile-boxes img{height:auto;width:100%;max-width:320px}}
 /* İşçilik malzeme fotoğrafları: tıkla-büyüt ipucu */
 .concept-img img[data-lb]{cursor:zoom-in}
+/* Gizlilik/KVKK sayfası: sade hukuki metin düzeni */
+.legal h2{font-size:1.35rem;color:var(--green);margin:1.6rem 0 .5rem}
+.legal p{font-size:1rem;line-height:1.75}
+.legal a{color:var(--green);border-bottom:1px solid var(--gold)}
+/* Footer gizlilik linki */
+.gizlilik-link{font-size:.85rem;opacity:.75;border-bottom:1px solid var(--line);margin-inline-start:.9em}
+.gizlilik-link:hover{opacity:1;border-bottom-color:var(--gold)}
 /* Tıpkıbasım ana kapağı: saydam kesim, krem zeminde gölgeyle süzülür */
 .facsimile-sec .split-media.bare img{filter:drop-shadow(0 22px 30px rgba(15,40,32,.34))}
 @media(max-width:820px){

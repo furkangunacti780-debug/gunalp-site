@@ -145,4 +145,7 @@
     <xhtml:link rel="alternate" hreflang="x-default" href="https://www.gunalp.com.tr/contact.html"/>
     <changefreq>yearly</changefreq><priority>0.8</priority>
   </url>
+  <url><loc>https://www.gunalp.com.tr/privacy.html</loc></url>
+  <url><loc>https://www.gunalp.com.tr/tr/privacy.html</loc></url>
+  <url><loc>https://www.gunalp.com.tr/ar/privacy.html</loc></url>
 </urlset>
