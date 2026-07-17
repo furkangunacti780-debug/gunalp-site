@@ -11,11 +11,16 @@
    tamamen izleyicisiz kalır). Kimliği yapıştırınca tüm sayfalarda
    otomatik etkinleşir — başka dosyaya dokunmak gerekmez.
    ===================================================================== */
-var GOOGLE_TAG_IDS = [];
+var GOOGLE_TAG_IDS = ["G-40DX5TVX7K"];
 
 (function () {
   "use strict";
   if (!GOOGLE_TAG_IDS || !GOOGLE_TAG_IDS.length) return;
+
+  // Ölçüm yalnızca gerçek sitede çalışsın: demo ve yerel önizleme
+  // istatistikleri kirletmesin diye burada durur.
+  var h = window.location.hostname;
+  if (h !== "www.gunalp.com.tr" && h !== "gunalp.com.tr") return;
 
   var s = document.createElement("script");
   s.async = true;
